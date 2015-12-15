@@ -16,11 +16,10 @@
   ------------
   1. Clone the following repository to a folder on your computer. https://github.com/mattyd2/powderhound
   2. Open the project in Eclipse or some other IDE.
-  3. Paste the following URL into into a browswer and agree to download the file 'ghcnd_hcn.tar.gz' from NOAA's ftp server -- ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd_hcn.tar.gz
-  4. Un-zip the 'ghcnd_hcn.tar.gz' file.
-  5. Save the un-compressed directory titled 'ghcnd_hcn' in the 'powderhound' directory.
-  6. Confirm the 'powderhound' directory setup properly by confirming it has the following items: 'ghcnd_hcn', 'mtd368', and 'READMED.md'.
-  7. You have now completed the installation of the 'powderhound' project on your local machine.
+  3. Download the NOAA historical data from here -- https://www.dropbox.com/sh/hw6sk6x4od7d5eo/AAAyApBod5ZoNd1KDPVGGZ3pa?dl=0
+  4. Save the un-compressed folder titled 'ghcnd_hcn' in the 'powderhound' directory.
+  5. Confirm the 'powderhound' directory setup properly by confirming it has the following items: 'ghcnd_hcn', 'mtd368', and 'READMED.md'.
+  6. You have now completed the installation of the 'powderhound' project on your local machine.
 
   Running the Program
   -------------------
