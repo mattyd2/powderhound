@@ -15,5 +15,6 @@ User Guide for Powderhound Project.
   Running the Program
   -------------------
   1. Open up the 'Terminal Program'
-  2. CD into the directory titled 'mtd368' inside the main "powderhound" project directory.
+  2. 'CD' or change directory and navigate your terminal session so you are in the directory called 'mtd368' inside the main "powderhound" project directory.
+
 

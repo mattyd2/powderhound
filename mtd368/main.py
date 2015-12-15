@@ -29,9 +29,9 @@ def main():
                 stdDeviationsforperiods.append(stdDeviations)
                 numberOfItemsforperiods.append(numberOfItems)
                 locationNamesforperiods.append(locationNames)
-            # skiAreaBarChart(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
-            # last50YearsData(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
-            # last25YearsData(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
+            skiAreaBarChart(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
+            last50YearsData(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
+            last25YearsData(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
             break
     except KeyboardInterrupt, ValueError:
         print "\n Interrupted!"
