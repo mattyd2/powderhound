@@ -32,7 +32,6 @@ def main():
             skiAreaBarChart(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
             last50YearsData(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
             last25YearsData(scoresforperiods, stdDeviationsforperiods, numberOfItemsforperiods, locationNamesforperiods)
-            break
     except KeyboardInterrupt, ValueError:
         print "\n Interrupted!"
     except EOFError:

@@ -17,7 +17,7 @@ def loaddata():
         weathermeasurementtypefilebuilder() # this can be run each time or just once beacause it creates a text file with all the data for a specific precipitation type, currently set to SNOW.
 
 def weathermeasurementtypefilebuilder ():
-    dataDirectoryPath = os.path.join(os.path.dirname(__file__), os.pardir, 'ghcnd_hcn_testing')
+    dataDirectoryPath = os.path.join(os.path.dirname(__file__), os.pardir, 'ghcnd_hcn')
     newfile = open("snow.txt", 'w')
     for i in os.listdir(dataDirectoryPath):
         filename = dataDirectoryPath+'/'+i

@@ -1,6 +1,4 @@
-"""This is a program that allows users to analyze the average snowfall by day across the
-lower 48 states. The program uses NOAA data sets and allows the user to evaluate different
-periods of the year to ski."""
+"""The user input module handles requesting the user's input as needed."""
 
 #author: Matthew Dunn
 #netID: mtd368
@@ -21,8 +19,7 @@ def userinput():
 
 def skidatesetter():
     while True:
-        skidate = '2016-01-12'
-        # skidate = raw_input('When do you want to go SHRED the GNAR? Format(YYYY-MM-DD)\n')
+        skidate = raw_input('When do you want to go SHRED the GNAR? Format(YYYY-MM-DD)\n')
         try:
             skidatevalidated = datemanager(skidate)
             if skidatevalidated is not None:
@@ -35,8 +32,7 @@ def skidatesetter():
 
 def deviationpenaltyinput():
     while True:
-        deviationpenalty = 12
-        # deviationpenalty = raw_input('How much should we penalize the annual fluxations in average snowfall?\n')
+        deviationpenalty = raw_input('How much should we penalize the annual fluxations in average snowfall?\n')
         try:
             deviationpenaltyinteger = int(deviationpenalty)
             if type(deviationpenaltyinteger) is int:
@@ -47,8 +43,7 @@ def deviationpenaltyinput():
 
 def unittypesetter():
     while True:
-        unittype = 'inch'
-        # unittype = raw_input('What unit system would you like, metric(centimeters) or imperial(inches)? Please enter "cm" or "inch". \n')
+        unittype = raw_input('What unit system would you like, metric(centimeters) or imperial(inches)? Please enter "cm" or "inch". \n')
         if unittype == "inch" or unittype == "cm":
             break
         print '\nIncorrect input type, please enter either "cm" or "inch". \n'

@@ -14,7 +14,6 @@ class skiresortlocater(object):
 
     def __init__ (self, rankedPeriodsData, stations):
         self.rankedPeriodsData = rankedPeriodsData
-        print self.rankedPeriodsData
         self.stations = stations
 
     def mergedatatoanalyze(self):

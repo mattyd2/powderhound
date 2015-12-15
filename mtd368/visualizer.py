@@ -24,20 +24,21 @@ class visualizationofskidata(object):
             bigdumpstd.append(skiDataPrepped['std'].values)
             bigdumpmean.append(skiDataPrepped['mean'].values)
             locationNames.append(skiDataPrepped.index)
-            ind.append(np.arange(len(skiDataPrepped['std'])))  # the x locations for the groups
+            ind.append(np.arange(len(skiDataPrepped['std'])))  # the x locations for the groups for plotting.
         return locationNames, bigdumpmean, bigdumpstd, ind
 
 def skiAreaBarChart(skiperiodscores, skiperiodstdDeviations, numberOfItems, locationNames):
     xmaxvalue = xmaxgenerator(skiperiodscores)
     width = 0.35
-    plt.figure(1, tight_layout=True, figsize=(8,10))
-    plt.annotate('All NOAA DATA', (0.5, 1))
+    plt.figure(1, tight_layout=False, figsize=(10,10))
+    plt.subplots_adjust(bottom=0.1, left=0.3, top=0.9, hspace=0.5, wspace=None)
+    plt.suptitle('ALL HISTORICAL NOAA DATA', fontsize=20)
     titles = ['Two Weeks BEFORE to Entered Date','One Week BEFORE to Entered Date', 'Week of Entered Date', 'One Week AFTER to Entered Date', 'Two Weeks AFTER to Entered Date']
     for i in range(5):
         plt.subplot(5, 1, i+1)
         plt.title(titles[i])
         plt.barh(numberOfItems[i][2], skiperiodscores[i][2], width, align='center', color='r', xerr=skiperiodstdDeviations[i][2], alpha=0.4)
-        plt.yticks(numberOfItems[i][2],locationNames[i][2])
+        plt.yticks(numberOfItems[i][2],locationNames[i][2], horizontalalignment='right', x=0.05)
         plt.xlim(0,xmaxvalue)
         plt.grid(True)
     plt.show()
@@ -61,7 +62,7 @@ def last25YearsData(skiperiodscores, skiperiodstdDeviations, numberOfItems, loca
     xmaxvalue = xmaxgenerator(skiperiodscores)
     width = 0.35
     plt.figure(2, tight_layout=True, figsize=(8,10))
-    plt.annotate('LAST 50 YEARS NOAA DATA', (0.5, 1))
+    plt.suptitle('LAST 25 YEARS NOAA DATA', fontsize=20)
     titles = ['Two Weeks BEFORE to Entered Date','One Week BEFORE to Entered Date', 'Week of Entered Date', 'One Week AFTER to Entered Date', 'Two Weeks AFTER to Entered Date']
     for i in range(5):
         plt.subplot(5, 1, i+1)
