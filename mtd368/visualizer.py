@@ -46,7 +46,8 @@ def skiAreaBarChart(skiperiodscores, skiperiodstdDeviations, numberOfItems, loca
 def last50YearsData(skiperiodscores, skiperiodstdDeviations, numberOfItems, locationNames):
     xmaxvalue = xmaxgenerator(skiperiodscores)
     width = 0.35
-    plt.figure(2, tight_layout=True, figsize=(8,10))
+    plt.figure(2, tight_layout=False, figsize=(10,10))
+    plt.subplots_adjust(bottom=0.1, left=0.3, top=0.9, hspace=0.5, wspace=None)
     plt.suptitle('LAST 50 YEARS NOAA DATA', fontsize=20)
     titles = ['Two Weeks BEFORE to Entered Date','One Week BEFORE to Entered Date', 'Week of Entered Date', 'One Week AFTER to Entered Date', 'Two Weeks AFTER to Entered Date']
     for i in range(5):
@@ -61,7 +62,8 @@ def last50YearsData(skiperiodscores, skiperiodstdDeviations, numberOfItems, loca
 def last25YearsData(skiperiodscores, skiperiodstdDeviations, numberOfItems, locationNames):
     xmaxvalue = xmaxgenerator(skiperiodscores)
     width = 0.35
-    plt.figure(2, tight_layout=True, figsize=(8,10))
+    plt.figure(3, tight_layout=False, figsize=(10,10))
+    plt.subplots_adjust(bottom=0.1, left=0.3, top=0.9, hspace=0.5, wspace=None)
     plt.suptitle('LAST 25 YEARS NOAA DATA', fontsize=20)
     titles = ['Two Weeks BEFORE to Entered Date','One Week BEFORE to Entered Date', 'Week of Entered Date', 'One Week AFTER to Entered Date', 'Two Weeks AFTER to Entered Date']
     for i in range(5):

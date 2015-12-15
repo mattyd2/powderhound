@@ -13,11 +13,11 @@ import pandas as pd
 def loaddata():
     newfile = os.path.isfile("snow.txt")
     if newfile == False:
-        print "Creating snow.txt file from 3.7GB of NOAA text data, this could take a min........\n"
+        print "Creating snow.txt file from 2.5GB of NOAA text data, this could take a min........\n"
         weathermeasurementtypefilebuilder() # this can be run each time or just once beacause it creates a text file with all the data for a specific precipitation type, currently set to SNOW.
 
 def weathermeasurementtypefilebuilder ():
-    dataDirectoryPath = os.path.join(os.path.dirname(__file__), os.pardir, 'ghcnd_hcn')
+    dataDirectoryPath = os.path.join(os.path.dirname(__file__), os.pardir, 'ghcnd_hcn_2')
     newfile = open("snow.txt", 'w')
     for i in os.listdir(dataDirectoryPath):
         filename = dataDirectoryPath+'/'+i
@@ -30,7 +30,7 @@ def weathermeasurementtypefilebuilder ():
     newfile.close()
 
 def monthlytextweatherdatamunger ():
-    print "Loading Data snow.txt file data into dataframe...............\n"
+    print "Loading Data 344MB of text data from snow.txt file data into dataframe, this could take a min...............\n"
     precipitationFileName = 'snow.txt'
     splits = [[0,11],[11,15],[15,17],[17,21],[21,26],[26,27],[27,28],[28,29],[29,34],[34,35],[35,36],[36,37],[37,42],[42,43],[43,44],[44,45],[45,50],[50,51],[51,52],[52,53],[53,58],[58,59],[59,60],[60,61],[61,66],[66,67],[67,68],[68,69],[69,74],[74,75],[75,76],[76,77],[77,82],[82,83],[83,84],[84,85],[85,90],[90,91],[91,92],[92,93],[93,98],[98,99],[99,100],[100,101],[101,106],[106,107],[107,108],[108,109],[109,114],[114,115],[115,116],[116,117],[117,122],[122,123],[123,124],[124,125],[125,130],[130,131],[131,132],[132,133],[133,138],[138,139],[139,140],[140,141],[141,146],[146,147],[147,148],[148,149],[149,154],[154,155],[155,156],[156,157],[157,162],[162,163],[163,164],[164,165],[165,170],[170,171],[171,172],[172,173],[173,178],[178,179],[179,180],[180,181],[181,186],[186,187],[187,188],[188,189],[189,194],[194,195],[195,196],[196,197],[197,202],[202,203],[203,204],[204,205],[205,210],[210,211],[211,212],[212,213],[213,218],[218,219],[219,220],[220,221],[221,226],[226,227],[227,228],[228,229],[229,234],[234,235],[235,236],[236,237],[237,242],[242,243],[243,244],[244,245],[245,250],[250,251],[251,252],[252,253],[253,258],[258,259],[259,260],[260,261],[261,266],[266,267],[267,268],[268,269]]
     monthlyWeather = splitter(splits, precipitationFileName)
