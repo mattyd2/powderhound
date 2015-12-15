@@ -6,46 +6,41 @@
 
 import datetime
 import calendar
+from errorhandler import *
 
 def datemanager(inputString):
-    validatedDate = validate(inputString)
-    print validatedDate
-    return datesrangenerator(inputString)
+    validatedDate = validformatchecker(inputString)
+    return dateinfuturechecker(validatedDate)
 
-def validate(inputString):
-    try:
-        userinputskidate = datetime.datetime.strptime(inputString, '%Y-%m-%d')
-        now = datetime.datetime.now()
-    except ValueError:
-        raise ValueError("Incorrect data format, should be YYYY-MM-DD")
-    if userinputskidate > now:
-        return userinputskidate
-    else:
-        raise ValueError("Date must be in the future.")
+def validformatchecker(inputString):
+    userinputskidate = datetime.datetime.strptime(inputString, '%Y-%m-%d')
+    return userinputskidate
+
+def dateinfuturechecker(validatedDate):
+    now = datetime.datetime.now()
+    if validatedDate > now:
+        return validatedDate
+    raise dateNotinFuture
 
 def datesrangenerator(validatedDate):
-    dayzero = datetime.datetime.strptime(validatedDate, '%Y-%m-%d')
     listofdayperiods = [-15,-9,-8,-1,0,6,7,13,14,20]
     weekperiods = []
     for i in listofdayperiods:
         datedelta = datetime.timedelta(days=i)
-        changeddate = datedelta + dayzero
+        changeddate = datedelta + validatedDate
         weekperiods.append(changeddate)
+    return weekgrouper(weekperiods)
+
+def weekgrouper (weekperiods):      # takes list of integers and groups them into week periods.
     it = iter(weekperiods)
-    finallist = []
+    finalgroupingofskidates = []
     for x in it:
         temp = [x, next(it)]
-        finallist.append(temp)
-    # print finallist
-    # print weekperiods
-    return weekperiods
+        finalgroupingofskidates.append(temp)
+    return finalgroupingofskidates
 
 def numberOfDaysinStartMonth(startofweek):
     startofweekyear, startofweekmonth = startofweek.year, startofweek.month
-    # endofweekyear, endofweekmonth = endofweek.year, endofweek.month
-    startMonthLastDay = calendar.monthrange(startofweekyear,startofweekmonth)[1]
-    # endmonthrange = calendar.monthrange(endofweekyear,endofweekmonth)[1]
-    # print "start month %d and end month %d" % (startMonthLastDay, endmonthrange)
-    numberofdaysinstartmonth = startMonthLastDay - startofweek.day
-    # numberofdaysinendmonth = endofweek.day - endmonthrange
+    startMonthLastDay = calendar.monthrange(startofweekyear,startofweekmonth)[1]    # calculates the number of days in month for given data.
+    numberofdaysinstartmonth = startMonthLastDay - startofweek.day                  # calculates the number of days until end of month from given date
     return numberofdaysinstartmonth, startMonthLastDay

@@ -12,21 +12,17 @@ import pandas as pd
 
 class skiresortlocater(object):
 
-    def __init__ (self, rankedData, stations):
-        self.rankedData = rankedData
+    def __init__ (self, rankedPeriodsData, stations):
+        self.rankedPeriodsData = rankedPeriodsData
+        print self.rankedPeriodsData
         self.stations = stations
 
     def mergedatatoanalyze(self):
-        weatherandstations = pd.merge(self.rankedData, self.stations, how='left', left_index=True, right_index=True)
-        weatherandstations['StateCity'] = weatherandstations['STATE']+" "+weatherandstations['NAME']
-        return weatherandstations
+        mergedPeriodDataAndStations = []
+        for i in self.rankedPeriodsData:
+            weatherandstations = pd.merge(i, self.stations, how='left', left_index=True, right_index=True)
+            weatherandstations['StateCity'] = weatherandstations['STATE']+" "+weatherandstations['NAME']
+            mergedPeriodDataAndStations.append(weatherandstations)
+            # print list(weatherandstations.columns.values)
+        return mergedPeriodDataAndStations
 
-
-    #TO DO:
-
-    # Append Nearest Ski Resort
-        # Calculate distance from resorts to stations
-            # Return the closest.
-
-    # De-duplicate resorts -> creating forced rank
-    # Return Top 5 Resorts to visualizer

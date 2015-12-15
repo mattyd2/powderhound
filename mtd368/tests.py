@@ -8,26 +8,52 @@
 
 import os
 import unittest
+import datetime
 from unittest import TestCase
 from dataanalyzer import *
 from dataloader import *
+from datemanager import *
+from intializer import *
+from userinputmanager import *
 
 """test function in dataanalyzer.py"""
 
 class unittestsdataanalyzer(unittest.TestCase):
 
-    def setUp(self):
-        pass
+    def test_dataloader(self):
+        loaddata()
+        self.assertEqual(True, os.path.isfile('snow.txt'))
 
-    def test_test_grades(self):
-        self.assertEqual(1, test_grades(['C', 'B', 'A']))
-        self.assertEqual(0, test_grades(['C', 'B', 'C']))
-        self.assertEqual(-1, test_grades(['A', 'B', 'B']))
+    def test_monthlytextweatherdatamunger(self):
+        monthlyWeather = monthlytextweatherdatamunger()
+        listofcolumnvalues = ['Station', 'Year', 'Month', 'Snow', 'Day01', 'Day02', 'Day03', 'Day04', 'Day05', 'Day06', 'Day07', 'Day08', 'Day09', 'Day10', 'Day11', 'Day12', 'Day13', 'Day14', 'Day15', 'Day16', 'Day17', 'Day18', 'Day19', 'Day20', 'Day21', 'Day22', 'Day23', 'Day24', 'Day25', 'Day26', 'Day27', 'Day28', 'Day29', 'Day30', 'Day31']
+        self.assertEqual(listofcolumnvalues, list(monthlyWeather.columns.values))
 
-    def test_loadrestaurantData(self):                     #test the data tranformer to confirm the shape is correct
-        loadeddata = loadrestaurantData()
-        loadeddatacolumnheaders = list(loadeddata.columns.values)
-        self.assertEquals(loadeddatacolumnheaders,['CAMIS', 'BORO', 'GRADE', 'GRADE DATE'])
+    def test_staiondatamunger(self):
+        stationvalues = staiondatamunger()
+        listofcolumnvalues = ['LAT', 'LONG', 'ELEV', 'STATE', 'NAME', 'GSNFLAG', 'HCNFLAG', 'WMOID']
+        self.assertEqual(listofcolumnvalues, list(stationvalues.columns.values))
+
+    def test_datemanager(self):
+        validateddate = datetime.datetime.strptime('2016-01-16', '%Y-%m-%d')
+        daterange = datesrangenerator(validateddate)
+        self.assertEqual(5, len(daterange))
+
+    def test_datesrangenerator(self):
+        inputdate = '2016-01-16'
+        date = datetime.datetime.strptime(inputdate, '%Y-%m-%d')
+        daterange = datemanager(inputdate)
+        self.assertEqual(date, daterange)
+
+    # def test_skiresortlocator(self):
+    #     locator = skiresortlocater()
+
+    # def test_mergedatatoanalyze(self):
+    #     listofcolumnNames = ['mean', 'std', 'amax', 'AverageScore', 'AverageScore2', 'LAT', 'LONG', 'ELEV', 'STATE', 'NAME', 'GSNFLAG', 'HCNFLAG', 'WMOID', 'StateCity']
+    #     initializer = powederhoundinitializer()
+    #     userinput =
+    #     skilocator = skiresortlocater.mergedatatoanalyze()
+
 
 if __name__ == '__main__':
     unittest.main()
