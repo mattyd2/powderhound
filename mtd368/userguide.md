@@ -1,8 +1,8 @@
-author: Matthew Dunn
-netID: mtd368
-date: 12/12/2015
+  author: Matthew Dunn
+  netID: mtd368
+  date: 12/12/2015
 
-User Guide for Powderhound Project.
+  User Guide for Powderhound Project.
 
   Installation
   ------------
