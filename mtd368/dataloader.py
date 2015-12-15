@@ -17,7 +17,7 @@ def loaddata():
         weathermeasurementtypefilebuilder() # this can be run each time or just once beacause it creates a text file with all the data for a specific precipitation type, currently set to SNOW.
 
 def weathermeasurementtypefilebuilder ():
-    dataDirectoryPath = os.path.join(os.path.dirname(__file__), os.pardir, 'ghcnd_hcn_2')
+    dataDirectoryPath = os.path.join(os.path.dirname(__file__), os.pardir, 'ghcnd_hcn')
     newfile = open("snow.txt", 'w')
     for i in os.listdir(dataDirectoryPath):
         filename = dataDirectoryPath+'/'+i
@@ -30,7 +30,7 @@ def weathermeasurementtypefilebuilder ():
     newfile.close()
 
 def monthlytextweatherdatamunger ():
-    print "Loading Data 344MB of text data from snow.txt file data into dataframe, this could take a min...............\n"
+    print "Loading 344MB of text data from snow.txt file data into dataframe, this could take a min...............\n"
     precipitationFileName = 'snow.txt'
     splits = [[0,11],[11,15],[15,17],[17,21],[21,26],[29,34],[37,42],[45,50],[53,58],[61,66],[69,74],[77,82],[85,90],[93,98],[101,106],[109,114],[117,122],[125,130],[133,138],[141,146],[149,154],[157,162],[165,170],[173,178],[181,186],[189,194],[197,202],[205,210],[213,218],[221,226],[229,234],[237,242],[245,250],[253,258],[261,266]]
     monthlyWeather = splitter(splits, precipitationFileName)
@@ -55,7 +55,6 @@ def splitter(splits, fileToBeSplitName):
     fileToBeSplitData = pd.read_csv(fileToBeSplitName, delimiter='\n', dtype=str, squeeze=True, header=None)
     splitDataRepository = pd.DataFrame([])
     for i,j in splits:
-        print i,j
         splitname = "split["+str(i)+':'+str(j)+']'
         splitDataRepository[splitname] = fileToBeSplitData.str[slice(i,j)]
     return splitDataRepository

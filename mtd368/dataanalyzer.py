@@ -24,9 +24,8 @@ class snowAnalyzer (object):
         groupedByMeanPeriodsProcessed = []
         for i in groupedByMeanPeriods:
             groupedByMeanUnitAdjusted = self.unitConverter(i)
-            print groupedByMeanUnitAdjusted
-            groupedByMeanUnitAdjusted['AverageScore2'] = (groupedByMeanUnitAdjusted['mean']/(groupedByMeanUnitAdjusted['std']*self.deviationpenalty))
-            groupedByMeanUnitAdjustedSorted = groupedByMeanUnitAdjusted.sort_values('mean', ascending=False, inplace=False) # This is where I can sort by skiet type.
+            groupedByMeanUnitAdjusted['AverageScore'] = (groupedByMeanUnitAdjusted['mean']/(groupedByMeanUnitAdjusted['std']*self.deviationpenalty)) # compute the calculation for our score of each location
+            groupedByMeanUnitAdjustedSorted = groupedByMeanUnitAdjusted.sort_values('AverageScore', ascending=False, inplace=False) # sort by the AverageScore
             groupedByMeanPeriodsProcessed.append(groupedByMeanUnitAdjustedSorted.head())
         return groupedByMeanPeriodsProcessed
 
@@ -40,11 +39,8 @@ class snowAnalyzer (object):
         weeklyMetricsThreePeriods = []
         for i in summaryWeekMetricsPeriods:
             summaryWeekMetricsTransposed = i.T
-            print summaryWeekMetricsTransposed.head()
-            groupbysummean = summaryWeekMetricsTransposed.groupby(level=0).mean().dropna()
-            print groupbysummean.head()
+            groupbysummean = summaryWeekMetricsTransposed.groupby(level=0).mean()
             groupbysummeanTransposed = groupbysummean.T
-            print groupbysummeanTransposed.head()
             weeklyMetricsThreePeriods.append(groupbysummeanTransposed)
         return weeklyMetricsThreePeriods
 

@@ -4,6 +4,14 @@
 
 # User Guide for Powderhound Project.
 
+  Required Package Versions
+  -------------------------
+  1. pytest                    2.8.1
+  2. python                    2.7.10
+  3. matplotlib                1.4.3
+  4. numpy                     1.10.1
+  5. pandas                    0.17.0
+
   Installation
   ------------
   1. Clone the following repository to a folder on your computer. https://github.com/mattyd2/powderhound

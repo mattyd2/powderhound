@@ -30,7 +30,7 @@ class visualizationofskidata(object):
 def skiAreaBarChart(skiperiodscores, skiperiodstdDeviations, numberOfItems, locationNames):
     xmaxvalue = xmaxgenerator(skiperiodscores)
     width = 0.35
-    plt.figure(1, tight_layout=False, figsize=(10,10))
+    plt.figure(1, tight_layout=False, figsize=(12,12))
     plt.subplots_adjust(bottom=0.1, left=0.3, top=0.9, hspace=0.5, wspace=None)
     plt.suptitle('ALL HISTORICAL NOAA DATA', fontsize=20)
     titles = ['Two Weeks BEFORE to Entered Date','One Week BEFORE to Entered Date', 'Week of Entered Date', 'One Week AFTER to Entered Date', 'Two Weeks AFTER to Entered Date']
@@ -38,7 +38,7 @@ def skiAreaBarChart(skiperiodscores, skiperiodstdDeviations, numberOfItems, loca
         plt.subplot(5, 1, i+1)
         plt.title(titles[i])
         plt.barh(numberOfItems[i][2], skiperiodscores[i][2], width, align='center', color='r', xerr=skiperiodstdDeviations[i][2], alpha=0.4)
-        plt.yticks(numberOfItems[i][2],locationNames[i][2], horizontalalignment='right', x=0.05)
+        plt.yticks(numberOfItems[i][2],locationNames[i][2])
         plt.xlim(0,xmaxvalue)
         plt.grid(True)
     plt.show()
@@ -46,7 +46,7 @@ def skiAreaBarChart(skiperiodscores, skiperiodstdDeviations, numberOfItems, loca
 def last50YearsData(skiperiodscores, skiperiodstdDeviations, numberOfItems, locationNames):
     xmaxvalue = xmaxgenerator(skiperiodscores)
     width = 0.35
-    plt.figure(2, tight_layout=False, figsize=(10,10))
+    plt.figure(2, tight_layout=False, figsize=(12,12))
     plt.subplots_adjust(bottom=0.1, left=0.3, top=0.9, hspace=0.5, wspace=None)
     plt.suptitle('LAST 50 YEARS NOAA DATA', fontsize=20)
     titles = ['Two Weeks BEFORE to Entered Date','One Week BEFORE to Entered Date', 'Week of Entered Date', 'One Week AFTER to Entered Date', 'Two Weeks AFTER to Entered Date']
@@ -62,7 +62,7 @@ def last50YearsData(skiperiodscores, skiperiodstdDeviations, numberOfItems, loca
 def last25YearsData(skiperiodscores, skiperiodstdDeviations, numberOfItems, locationNames):
     xmaxvalue = xmaxgenerator(skiperiodscores)
     width = 0.35
-    plt.figure(3, tight_layout=False, figsize=(10,10))
+    plt.figure(3, tight_layout=False, figsize=(12,12))
     plt.subplots_adjust(bottom=0.1, left=0.3, top=0.9, hspace=0.5, wspace=None)
     plt.suptitle('LAST 25 YEARS NOAA DATA', fontsize=20)
     titles = ['Two Weeks BEFORE to Entered Date','One Week BEFORE to Entered Date', 'Week of Entered Date', 'One Week AFTER to Entered Date', 'Two Weeks AFTER to Entered Date']

@@ -45,15 +45,6 @@ class unittestsdataanalyzer(unittest.TestCase):
         daterange = datemanager(inputdate)
         self.assertEqual(date, daterange)
 
-    # def test_skiresortlocator(self):
-    #     locator = skiresortlocater()
-
-    # def test_mergedatatoanalyze(self):
-    #     listofcolumnNames = ['mean', 'std', 'amax', 'AverageScore', 'AverageScore2', 'LAT', 'LONG', 'ELEV', 'STATE', 'NAME', 'GSNFLAG', 'HCNFLAG', 'WMOID', 'StateCity']
-    #     initializer = powederhoundinitializer()
-    #     userinput =
-    #     skilocator = skiresortlocater.mergedatatoanalyze()
-
 
 if __name__ == '__main__':
     unittest.main()
